@@ -8,5 +8,11 @@ import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
 RunWith(javaClass<Suite>())
-Suite.SuiteClasses(javaClass<VerbTest>(), javaClass<AnyMatchersTest>(), javaClass<StringMatcherTest>(), javaClass<ShouldTest>())
+Suite.SuiteClasses(
+        javaClass<VerbTest>(),
+        javaClass<AnyMatchersTest>(),
+        javaClass<StringMatcherTest>(),
+        javaClass<ShouldTest>(),
+        javaClass<FunctionMatcherTest>()
+)
 public class AllTest {}

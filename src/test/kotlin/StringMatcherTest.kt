@@ -6,7 +6,6 @@
 
 import org.junit.Test as test
 import spec.matchers.*
-import sun.management.counter.Units
 
 public class StringMatcherTest {
     test fun length() {
@@ -27,7 +26,7 @@ public class StringMatcherTest {
     }
 
     test fun containAny() {
-        "abc" should contain any of("a" ,"b" ,"c")
+        "abc" should contain any of("a", "b", "c")
         "abc" should !contain any of("d", "e", "f")
 
     }

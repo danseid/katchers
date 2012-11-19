@@ -11,12 +11,11 @@ import kotlin.test.*
 open class AnyMatcher<T> (val target: T, val verb: Verb) {
     fun equal(value: T){
         when (verb) {
-            Verb.BE -> {if (!value.equals(target)) fail(value, target)}
+            Verb.BE -> {if (value != target) fail(value, target)}
             Verb.NOTBE -> {if (value == target) fail(value, target)}
             else -> notSupported()
         }
     }
-
     open fun any(values: List<T>) {
          when (verb) {
            Verb.BE -> {
