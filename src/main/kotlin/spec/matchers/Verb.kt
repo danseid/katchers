@@ -20,6 +20,8 @@ enum class Verb{
     NOTCONTAIN
     MATCH
     NOTMATCH
+    FAIL
+    NOTFAIL
     fun not(): Verb {
         return when(this){
             BE -> NOTBE
@@ -34,6 +36,8 @@ enum class Verb{
             NOTCONTAIN -> CONTAIN
             MATCH -> NOTMATCH
             NOTMATCH -> MATCH
+            FAIL -> NOTFAIL
+            NOTFAIL -> FAIL
             else -> BE
         }
     }
@@ -45,3 +49,4 @@ val start = Verb.START
 val end = Verb.END
 val contain = Verb.CONTAIN
 val match = Verb.MATCH
+val fail = Verb.FAIL

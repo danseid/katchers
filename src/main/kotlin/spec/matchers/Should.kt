@@ -6,10 +6,14 @@ package spec.matchers
  * Time: 12:22
  */
 
-public inline fun <T>T.should(pre: Verb): AnyMatcher<T> {
-    return AnyMatcher(this, pre)
+public fun <T>T.should(verb: Verb): AnyMatcher<T> {
+    return AnyMatcher(this, verb)
 }
 
-public inline fun String.should(pre: Verb): StringMatcher {
-    return StringMatcher(this, pre)
+public fun String.should(verb: Verb): StringMatcher {
+    return StringMatcher(this, verb)
+}
+
+public fun <R>jet.Function0<R>.should(verb: Verb): FunctionMatcher<R>{
+        return FunctionMatcher(this, verb)
 }

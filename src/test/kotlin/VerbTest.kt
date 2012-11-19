@@ -45,4 +45,10 @@ public class VerbTest {
         assertEquals(!!match, Verb.MATCH)
     }
 
+    test fun fail() {
+        assertEquals(fail, Verb.FAIL)
+        assertEquals(!fail, Verb.NOTFAIL)
+        assertEquals(!!fail, Verb.FAIL)
+    }
+
 }
