@@ -10,7 +10,7 @@ import spec.matchers.*
 
 public class ShouldTest {
     test fun shouldBeAnyMatcher() {
-        assertTrue(Any().should(be) is AnyMatcher<Any>)
+        assertTrue(Any().should(be) is AnyBeMatcher<Any>)
     }
 
     test fun shouldBeStringMatcher() {

@@ -6,18 +6,19 @@ package spec.matchers
  * Time: 12:22
  */
 
-public fun <T>T.should(verb: Verb): AnyMatcher<T> {
-    return AnyMatcher(this, verb)
+public fun <T>T.should(val verb: BE): AnyBeMatcher<T> {
+    return AnyBeMatcher(this)
 }
+
+public fun <T>T.should(val verb: NOTBE): AnyNotBeMatcher<T> {
+    return AnyNotBeMatcher(this)
+}
+
 
 public fun String.should(verb: Verb): StringMatcher {
     return StringMatcher(this, verb)
 }
 
-public fun <R>jet.Function0<R>.should(verb: Verb): FunctionMatcher<R>{
-        return FunctionMatcher(this, verb)
-}
-
-public fun Int.should(verb: Verb) : IntMatcher {
-    return IntMatcher(this, verb)
+public fun <R>jet.Function0<R>.should(verb: Verb): FunctionFailMatcher<R>{
+        return FunctionFailMatcher(this)
 }

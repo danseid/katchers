@@ -1,4 +1,7 @@
 package spec.matchers
+
+import kotlin.test.*
+
 /**
  * Created with IntelliJ IDEA.
  * User: m2909
@@ -6,28 +9,27 @@ package spec.matchers
  * Time: 08:39
  * To change this template use File | Settings | File Templates.
  */
-import kotlin.test.*
 
-open class AnyMatcher<T> (val target: T, val verb: Verb) {
-    fun equal(value: T){
-        when (verb) {
-            Verb.BE -> {if (value != target) fail(value, target)}
-            Verb.NOTBE -> {if (value == target) fail(value, target)}
-            else -> notSupported()
-        }
+trait Matcher {
+    inline protected fun notSupported(): Unit = fail("Not Supported Condition ")
+}
+
+open class AnyBeMatcher<T>(val target: T): Matcher {
+    fun equal(value: T) {
+        { if (value != target) fail(value, target) }
     }
     open fun any(values: List<T>) {
-         when (verb) {
-           Verb.BE -> {
-              if(!values.any {it == target}) fail("any of $values", target)
-           }
-           Verb.NOTBE -> {
-              if(values any {it == target}) fail("not any of $values", target)
-           }
-           else -> notSupported();
-         }
+        if(!values.any { it == target }) fail("any of $values", target)
     }
-    protected fun notSupported(): Unit = fail("Not Supported Condition " + verb)
+}
+
+open class AnyNotBeMatcher<T>(val target: T): Matcher {
+    fun equal(value: T) {
+        if (value == target) fail(value, target)
+    }
+    open fun any(values: List<T>) {
+        if(values any { it == target }) fail("not any of $values", target)
+    }
 }
 
 

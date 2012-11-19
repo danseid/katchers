@@ -10,45 +10,38 @@ import spec.matchers.*
 
 public class VerbTest {
     test fun be() {
-        assertEquals(be, Verb.BE)
-        assertEquals(!be, Verb.NOTBE)
-        assertEquals(!!be, Verb.BE)
+        assertEquals(!be, notbe)
+        assertEquals(!!be, be)
     }
 
     test fun have() {
-        assertEquals(have, Verb.HAVE)
-        assertEquals(!have, Verb.NOTHAVE)
-        assertEquals(!!have, Verb.HAVE)
+        assertEquals(!have, nothave)
+        assertEquals(!!have, have)
     }
 
     test fun start() {
-        assertEquals(start, Verb.START)
-        assertEquals(!start, Verb.NOTSTART)
-        assertEquals(!!start, Verb.START)
+        assertEquals(!start, notstart)
+        assertEquals(!!start, start)
     }
 
     test fun end() {
-        assertEquals(end, Verb.END)
-        assertEquals(!end, Verb.NOTEND)
-        assertEquals(!!end, Verb.END)
+        assertEquals(!end, notend)
+        assertEquals(!!end, end)
     }
 
     test fun contain() {
-        assertEquals(contain, Verb.CONTAIN)
-        assertEquals(!contain, Verb.NOTCONTAIN)
-        assertEquals(!!contain, Verb.CONTAIN)
+        assertEquals(!contain, notcontain)
+        assertEquals(!!contain, contain)
     }
 
     test fun match() {
-        assertEquals(match, Verb.MATCH)
-        assertEquals(!match, Verb.NOTMATCH)
-        assertEquals(!!match, Verb.MATCH)
+        assertEquals(!match, notmatch)
+        assertEquals(!!match, match)
     }
 
     test fun fail() {
-        assertEquals(fail, Verb.FAIL)
-        assertEquals(!fail, Verb.NOTFAIL)
-        assertEquals(!!fail, Verb.FAIL)
+        assertEquals(!fail, notfail)
+        assertEquals(!!fail, fail)
     }
 
 }

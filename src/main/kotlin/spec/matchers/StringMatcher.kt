@@ -6,6 +6,7 @@ package spec.matchers
  * Time: 13:11
  */
 
+/*
 class StringMatcher(target: String, verb: Verb): AnyMatcher<String>(target, verb){
     fun length(expected: Int) {
         when (verb) {
@@ -48,5 +49,57 @@ class StringMatcher(target: String, verb: Verb): AnyMatcher<String>(target, verb
             else -> notSupported()
         }
     }
+}
+*/
 
+class StringHaveMatcher(val target: String): Matcher{
+    fun length(expected: Int) {
+
+    }
+}
+
+class StringNotHaveMatcher(val target: String): Matcher{
+    fun length(expected: Int) {
+
+    }
+}
+
+class StringStartMatcher(val target: String): Matcher{
+    fun with(expected: String) {
+
+    }
+}
+
+class StringNotStartMatcher(val target: String): Matcher{
+    fun with(expected: String) {
+
+    }
+}
+
+class StringEndMatcher(val target: String): Matcher{
+    fun with(expected: String) {
+
+    }
+}
+
+class StringNotEndMatcher(val target: String): Matcher{
+    fun with(expected: String) {
+
+    }
+}
+
+class StringContainMatcher(val target: String): Matcher{
+    fun any(values: List<String>) {
+    }
+    fun all(values: List<String>) {
+
+    }
+}
+
+class StringNotContainMatcher(val target: String): Matcher{
+    fun any(values: List<String>) {
+    }
+    fun all(values: List<String>) {
+
+    }
 }

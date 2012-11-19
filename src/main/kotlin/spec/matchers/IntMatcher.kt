@@ -6,7 +6,7 @@ package spec.matchers
  * Time: 12:21
  */
 
-class IntMatcher(target: Int, verb: Verb) : AnyMatcher<Int>(target, verb){
+class IntMatcher(target: Int) : Matcher{
 
     // greater than: target > value
     fun gt(value: Int) {
