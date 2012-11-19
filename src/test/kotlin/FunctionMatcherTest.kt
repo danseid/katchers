@@ -5,31 +5,36 @@
  */
 
 import org.junit.Test as test
-import spec.matchers.fail
-import kotlin.concurrent.withLock
-import kotlin.nullable.find
 import spec.matchers.*
-import java.util.NoSuchElementException
-import kotlin.test.failsWith
 
 public class FunctionMatcherTest {
-    test fun failWith() {
-        val block = {throw ArrayIndexOutOfBoundsException()}
 
-        try{
-           block should fail with ArrayIndexOutOfBoundsException()
-           block should !fail with NullPointerException()
+    test fun functionNotThrowingAnException () {
+        { } should !fail with AssertionError()
 
-        } catch (e: AssertionError){
-            fail("no exception", e)
+        failIfNoAssertionErrorThrown{
+            { } should fail with AssertionError()
+        }
+    }
+
+    test fun functionThrowingAnException () {
+        { throw NullPointerException() } should fail with NullPointerException();
+        { throw NullPointerException() } should !fail with AssertionError();
+
+        failIfNoAssertionErrorThrown{
+            { throw NullPointerException() } should fail with AssertionError()
         }
 
-        try {
-            block should fail with NullPointerException()
-            fail("assertion error", "no assertion error")
-            block should !fail with ArrayIndexOutOfBoundsException()
-            fail("assertion error", "no assertion error")
+    }
 
-        } catch (e: AssertionError) {}
+    inline fun failIfNoAssertionErrorThrown(block: () -> Unit) {
+        var assertErrorThrown = false
+        try{
+            block()
+        }  catch (e: AssertionError){
+            assertErrorThrown = true
+        } finally {
+            if(!assertErrorThrown) fail("AssertionError", "none")
+        }
     }
 }
