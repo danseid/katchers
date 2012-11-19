@@ -14,3 +14,7 @@ fun <T>fail(expected: T, got: T) : Unit  {
        got:       <$got>
     """)
 }
+
+fun <T>of(vararg values: T) : List<T> {
+    return values.toList()
+}

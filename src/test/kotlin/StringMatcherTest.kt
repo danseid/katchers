@@ -27,8 +27,14 @@ public class StringMatcherTest {
     }
 
     test fun containAny() {
-        "abc" should contain any arrayList("a" ,"b" ,"c")
-        "abc" should !contain any arrayList("d", "e", "f")
+        "abc" should contain any of("a" ,"b" ,"c")
+        "abc" should !contain any of("d", "e", "f")
+
+    }
+
+    test fun containAll() {
+        "abc" should contain all of("a", "b", "c")
+        "abc" should !contain all of("d", "e")
     }
 
 } 

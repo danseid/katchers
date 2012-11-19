@@ -29,7 +29,8 @@ class StringMatcher(target: String, verb: Verb) : AnyMatcher<String>(target, ver
     }
 
     fun any(strings: List<String>) : Unit{
-        val stringsContained = strings.filter {target.contains(it)}
+        val stringsContained = strings filter {target.contains(it)}
+
         when(verb){
              Verb.CONTAIN -> {
                  if (stringsContained.size == 0) fail("$target should contain any of $strings", "$target did not contain any of $strings")
@@ -39,6 +40,21 @@ class StringMatcher(target: String, verb: Verb) : AnyMatcher<String>(target, ver
              }
              else -> notSupported()
          }
+    }
+
+    fun all(strings: List<String>) : Unit {
+        val stringsContained = strings filter {target.contains(it)}
+        val stringsNotContained = strings filter {!target.contains(it)}
+
+        when(verb) {
+            Verb.CONTAIN -> {
+               if(stringsNotContained.size  > 0) fail("$target should contain all of $strings", "$target did not contain $stringsNotContained")
+            }
+            Verb.NOTCONTAIN -> {
+                if (stringsNotContained.size != strings.size)  fail("$target should not contain all of $strings", "$target contained $stringsContained")
+            }
+            else -> notSupported()
+        }
     }
 
 }
