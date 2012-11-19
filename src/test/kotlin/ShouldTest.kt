@@ -4,13 +4,13 @@
  * Time: 16:26
  */
 
+import kotlin.test.assertTrue
 import org.junit.Test as test
 import spec.matchers.*
-import kotlin.test.assertTrue
 
 public class ShouldTest {
     test fun shouldBeAnyMatcher() {
-       assertTrue(Any().should(be) is AnyMatcher<Any>)
+        assertTrue(Any().should(be) is AnyMatcher<Any>)
     }
 
     test fun shouldBeStringMatcher() {

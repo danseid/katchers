@@ -16,6 +16,18 @@ open class AnyMatcher<T> (val target: T, val verb: Verb) {
             else -> notSupported()
         }
     }
+
+    open fun any(values: List<T>) {
+         when (verb) {
+           Verb.BE -> {
+              if(!values.any {it == target}) fail("any of $values", target)
+           }
+           Verb.NOTBE -> {
+              if(values any {it == target}) fail("not any of $values", target)
+           }
+           else -> notSupported();
+         }
+    }
     protected fun notSupported(): Unit = fail("Not Supported Condition " + verb)
 }
 
