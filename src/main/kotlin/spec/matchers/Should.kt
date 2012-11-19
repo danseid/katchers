@@ -17,3 +17,7 @@ public fun String.should(verb: Verb): StringMatcher {
 public fun <R>jet.Function0<R>.should(verb: Verb): FunctionMatcher<R>{
         return FunctionMatcher(this, verb)
 }
+
+public fun Int.should(verb: Verb) : IntMatcher {
+    return IntMatcher(this, verb)
+}
