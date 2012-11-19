@@ -14,7 +14,3 @@ fun <T>fail(expected: T, got: T) : Unit  {
        got:       <$got>
     """)
 }
-
-fun Boolean.xor(b: Boolean) : Boolean {
-    return (this && !b) || (!this && b)
-}

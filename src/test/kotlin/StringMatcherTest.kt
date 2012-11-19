@@ -24,10 +24,11 @@ public class StringMatcherTest {
         "abc" should end with "bc"
         "abc" should end with ""
         "" should !end with "abc"
-
-        ("" should be).blank()
     }
 
-
+    test fun containAny() {
+        "abc" should contain any arrayList("a" ,"b" ,"c")
+        "abc" should !contain any arrayList("d", "e", "f")
+    }
 
 } 

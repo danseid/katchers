@@ -1,5 +1,8 @@
 package spec.matchers
 
+import java.io.SyncFailedException
+import kotlin.test.fail
+
 /**.
  * User: Daniel Seidler
  * Date: 15.11.12
@@ -25,9 +28,17 @@ class StringMatcher(target: String, verb: Verb) : AnyMatcher<String>(target, ver
         }
     }
 
-    fun blank() : Unit{
-
+    fun any(strings: List<String>) : Unit{
+        val stringsContained = strings.filter {target.contains(it)}
+        when(verb){
+             Verb.CONTAIN -> {
+                 if (stringsContained.size == 0) fail("$target should contain any of $strings", "$target did not contain any of $strings")
+             }
+             Verb.NOTCONTAIN -> {
+                 if(stringsContained.size > 0) fail("$target should not contain any of $strings", "$target contained $stringsContained")
+             }
+             else -> notSupported()
+         }
     }
-
 
 }

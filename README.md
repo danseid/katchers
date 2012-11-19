@@ -4,9 +4,13 @@ in JUnit test using the word *should*.
 
 ##Quick Start
 Import spec.matchers.* into your JUnit TestCase:
+
     import spec.matchers.*
+
 Try Equal or NotEqual
+
     1 should be equal 1
     1 should !be equal 2
-# More Assertions
+
+##More Assertions
 see Wiki
