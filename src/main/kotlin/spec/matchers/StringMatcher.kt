@@ -1,21 +1,18 @@
 package spec.matchers
 
-import java.io.SyncFailedException
-import kotlin.test.fail
-
 /**.
  * User: Daniel Seidler
  * Date: 15.11.12
  * Time: 13:11
  */
 
-class StringMatcher(target: String, verb: Verb) : AnyMatcher<String>(target, verb){
+class StringMatcher(target: String, verb: Verb): AnyMatcher<String>(target, verb){
     fun length(expected: Int) {
-      when (verb) {
-          Verb.HAVE -> target.length() should be equal expected
-          Verb.NOTHAVE -> target.length() should !be equal expected
-          else-> notSupported()
-      }
+        when (verb) {
+            Verb.HAVE -> target.length() should be equal expected
+            Verb.NOTHAVE -> target.length() should !be equal expected
+            else-> notSupported()
+        }
     }
 
     fun with(expected: String) {
@@ -28,30 +25,25 @@ class StringMatcher(target: String, verb: Verb) : AnyMatcher<String>(target, ver
         }
     }
 
-    fun any(strings: List<String>) : Unit{
-        val stringsContained = strings filter {target.contains(it)}
-
+    override fun any(values: List<String>): Unit {
         when(verb){
-             Verb.CONTAIN -> {
-                 if (stringsContained.size == 0) fail("$target should contain any of $strings", "$target did not contain any of $strings")
-             }
-             Verb.NOTCONTAIN -> {
-                 if(stringsContained.size > 0) fail("$target should not contain any of $strings", "$target contained $stringsContained")
-             }
-             else -> notSupported()
-         }
-    }
-
-    fun all(strings: List<String>) : Unit {
-        val stringsContained = strings filter {target.contains(it)}
-        val stringsNotContained = strings filter {!target.contains(it)}
-
-        when(verb) {
             Verb.CONTAIN -> {
-               if(stringsNotContained.size  > 0) fail("$target should contain all of $strings", "$target did not contain $stringsNotContained")
+                if (!values.any { target.contains(it) }) fail("$target should contain any of $values", "$target did not contain any of $values")
             }
             Verb.NOTCONTAIN -> {
-                if (stringsNotContained.size != strings.size)  fail("$target should not contain all of $strings", "$target contained $stringsContained")
+                if(values.any {target.contains(it) }) fail("$target should not contain any of $values", "$target contained ${values filter { target.contains(it) }}")
+            }
+            else -> super.any(values)
+        }
+    }
+
+    fun all(values: List<String>): Unit {
+        when(verb) {
+            Verb.CONTAIN -> {
+                if(!values.all { target.contains(it) }) fail("$target should contain all of $values", "$target did not contain ${values filter { !target.contains(it) }}")
+            }
+            Verb.NOTCONTAIN -> {
+                if (values.all { target.contains(it) })  fail("$target should not contain all of $values", "$target contained ${values filter { target.contains(it) }}")
             }
             else -> notSupported()
         }
