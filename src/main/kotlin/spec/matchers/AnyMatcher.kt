@@ -15,19 +15,17 @@ trait Matcher {
 }
 
 open class AnyBeMatcher<T>(val target: T): Matcher {
-    fun equal(value: T) {
-        { if (value != target) fail(value, target) }
-    }
-    open fun any(values: List<T>) {
+    inline fun equal(value: T) = if (value != target) fail(value, target)
+
+    open inline fun any(values: List<T>) {
         if(!values.any { it == target }) fail("any of $values", target)
     }
 }
 
 open class AnyNotBeMatcher<T>(val target: T): Matcher {
-    fun equal(value: T) {
-        if (value == target) fail(value, target)
-    }
-    open fun any(values: List<T>) {
+    inline fun equal(value: T) = if (value == target) fail(value, target)
+
+    open inline fun any(values: List<T>) {
         if(values any { it == target }) fail("not any of $values", target)
     }
 }

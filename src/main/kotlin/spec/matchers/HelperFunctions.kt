@@ -8,13 +8,11 @@ package spec.matchers
 import kotlin.test.*
 
 
-fun <T>fail(expected: T, got: T) : Unit  {
+inline fun <T>fail(expected: T, got: T) : Unit  {
     fail("""
        expected:  <$expected>
        got:       <$got>
     """)
 }
 
-fun <T>of(vararg values: T) : List<T> {
-    return values.toList()
-}
+inline fun <T>of(vararg values: T): List<T> = values.toList()

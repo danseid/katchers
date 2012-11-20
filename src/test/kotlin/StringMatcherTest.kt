@@ -13,6 +13,10 @@ public class StringMatcherTest {
         "a" should have length 1
         "a" should !have length 0
         "" should !have length 1
+
+        {"" should have length 1} should fail with AssertionError();
+        {"" should !have length 0} should fail with AssertionError()
+
     }
 
     test fun with() {

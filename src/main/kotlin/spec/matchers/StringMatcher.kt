@@ -53,15 +53,11 @@ class StringMatcher(target: String, verb: Verb): AnyMatcher<String>(target, verb
 */
 
 class StringHaveMatcher(val target: String): Matcher{
-    fun length(expected: Int) {
-
-    }
+    inline fun length(expected: Int) = target.length() should be equal expected
 }
 
 class StringNotHaveMatcher(val target: String): Matcher{
-    fun length(expected: Int) {
-
-    }
+    inline fun length(expected: Int) = target.length() should !be equal expected
 }
 
 class StringStartMatcher(val target: String): Matcher{
