@@ -9,16 +9,12 @@
 
 ##Usage
 
---------------------
-
 
 __1. Import `import org.katchers.*`__
 
 __2. Write assertions `1 should be equal 1`__
 
 ##Syntax
-
---------------------
 
 Every matcher expression starts with a *__result__* we want to validate, followed by *__should__*, a *__verb__(i.e.: be, have, contain ...)*, *__matchfunction__(depends on type of result and verb we are using)*  and *__expected value__(depends on matchfunction)*.
 
@@ -29,8 +25,6 @@ Every verb can be negated by  __!__  operator
     1 should !be equal 2
 
 ##List of katchers
-
---------------------
 
 ###Any
 Any matchers may be used on any type of object.
