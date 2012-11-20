@@ -29,14 +29,28 @@ Every verb can be negated by  __!__  operator
 ###Any
 Any matchers may be used on any type of object.
 ####be | !be  equal
-equal matchfunction should only be used on types, that implement equals function correctly
+Equal <matchfunction> should only be used on types, that implement equals function correctly
 
     1 should be equal 1   //✔
     2 should !be equal 1  //✔
     "string" should be equal "string" //✔
     "string" should be equal "str"  //✘
 ####be | !be  any
+Match the result to any object in a list
+
+    1 should be any of(1,2,3) //✔ of is a convenient function to create a list
+    1 should be any arrayList(1,2,3) //✔ same as above
+    "abc" should be any of("cab", "bac", "abc") //✔
+    4 should !be any of(1,2,3)  //✔
+    4 should !be any of (1,2,4) //✘
 
 ###String
-####
+####have | !have length
+####start | !start with
+####end | !end with
+####contain | !contain any
+####contain | !contain all
+
+
 ###Function
+####fail | !fail with
