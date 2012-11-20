@@ -1,16 +1,17 @@
+#KATCHERS
+
+*library of matchers for building test expressions in [Kotlin](http://kotlin.jetbrains.org/)*
+
 ##Introduction
-Kotlin-Spec-Matchers is using Kotlin infix notation to provide a domain specific language (DSL) for expressing assertions
-in JUnit test using the word *should*.
 
-##Quick Start
-Import spec.matchers.* into your JUnit TestCase:
+*Katchers* is using Kotlin infix notation to provide a domain specific language (DSL) for expressing assertions in tests using the word *should*.
 
-    import spec.matchers.*
+##Usage
 
-Try Equal or NotEqual
+__1. Import `import org.katchers.*`__
 
-    1 should be equal 1
-    1 should !be equal 2
+__2. Write assertions `1 should be equal 1`__
 
-##More Assertions
-see Wiki
+
+
+##Examples

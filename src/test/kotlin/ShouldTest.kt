@@ -6,7 +6,7 @@
 
 import kotlin.test.assertTrue
 import org.junit.Test as test
-import spec.matchers.*
+import org.katchers.*
 
 public class ShouldTest {
     test fun shouldBeAnyMatcher() {

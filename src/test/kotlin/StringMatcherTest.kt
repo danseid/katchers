@@ -5,7 +5,7 @@
  */
 
 import org.junit.Test as test
-import spec.matchers.*
+import org.katchers.*
 
 public class StringMatcherTest {
     test fun haveLength() {

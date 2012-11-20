@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package spec.matchers
+package org.katchers
 
 import kotlin.test.*
 

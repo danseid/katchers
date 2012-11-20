@@ -6,7 +6,7 @@
 
 import kotlin.test.assertEquals
 import org.junit.Test as test
-import spec.matchers.*
+import org.katchers.*
 
 public class VerbTest {
     test fun be() {
