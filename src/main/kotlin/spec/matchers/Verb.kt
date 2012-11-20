@@ -7,7 +7,6 @@ package spec.matchers
  *
  */
 trait Verb {
-
 }
 
 public class BE: Verb {
