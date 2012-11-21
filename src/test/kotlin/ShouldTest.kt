@@ -27,6 +27,23 @@ public class ShouldTest {
     }
 
     test fun shouldBeStringMatcher() {
+        assertTrue(String().should(be) is AnyBeMatcher<String>)
+        assertTrue(String().should(!be) is AnyNotBeMatcher<String>)
+        assertTrue(String().should(contain) is StringContainMatcher)
+        assertTrue(String().should(!contain) is StringNotContainMatcher)
+        assertTrue(String().should(start) is StringStartMatcher)
+        assertTrue(String().should(!start) is StringNotStartMatcher)
+        assertTrue(String().should(end) is StringEndMatcher)
+        assertTrue(String().should(!end) is StringNotEndMatcher)
+        assertTrue(String().should(have) is StringHaveMatcher)
+        assertTrue(String().should(!have) is StringNotHaveMatcher)
+    }
+
+    test fun shouldBeFunctionMatcher() {
+        assertTrue({}.should(fail) is FunctionFailMatcher<Unit>)
+        assertTrue({}.should(!fail) is FunctionNotFailMatcher<Unit>)
+        assertTrue({"string"}.should(fail) is FunctionFailMatcher<String>)
+        assertTrue({"string"}.should(!fail) is FunctionNotFailMatcher<String>)
 
     }
 } 
