@@ -44,15 +44,15 @@ Match the result to any object in a list
     4 should !be any of(1,2,3)                  //✔
     4 should !be any of (1,2,4)                 //✘
 
-###Int
-Matchers to use on Int objects
+###Number
+Matchers to use on number objects like Int, Float, Double ...
 #### be | !be gt |greaterThan
-    1 should be gt 0             //✔
-    1 should be greaterThan 0    //✔ same as above
-    1 should !be gt 1            //✔
-    1 should !be gt 2            //✔
-    1 should be gt 1             //✘
-    1 should be gt 2             //✘
+    1 should be gt 0.0             //✔
+    1 should be greaterThan 0      //✔ same as above
+    1 should !be gt 1              //✔
+    1.9 should !be gt 2            //✔
+    1 should be gt 1               //✘
+    1 should be gt 2               //✘
 #### be | !be gte | greaterOrEqualThan
     1 should  be gte 0             //✔
     1 should  be greaterOrEqualThan 0    //✔ same as above
@@ -61,12 +61,12 @@ Matchers to use on Int objects
     1 should !be gte 1             //✘
     1 should  be gte 2             //✘
 #### be | !be lt | lessThan
-    1 should be lt 2             //✔
-    1 should be lessThan 2       //✔ same as above
-    1 should !be lt 1            //✔
-    1 should !be lt 0            //✔
-    1 should be lt 1             //✘
-    1 should be lt 0             //✘
+    1.5 should be lt 2             //✔
+    1 should be lessThan 2        //✔ same as above
+    1 should !be lt 1             //✔
+    1 should !be lt 0             //✔
+    1 should be lt 1              //✘
+    1 should be lt 0              //✘
 #### be | !be lte | lessOrEqualThan
     1 should  be lte 2             //✔
     1 should  be lessOrEqualThan 2    //✔ same as above
