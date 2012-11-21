@@ -19,42 +19,59 @@ package org.katchers
  * @author Daniel Seidler
  * @since 2012/11/20
  */
-class IntMatcher(target: Int): Matcher{
+class IntBeMatcher(target: Int): AnyBeMatcher<Int>(target){
 
-    // greater than: target > value
-    fun gt(value: Int) {
-        greaterThan(value)
-    }
-
-    // greater than or equal: target > value
-    fun gte(value: Int) {
-        greaterOrEqualThan(value)
-    }
-
-    // less than: target > value
-    fun lt(value: Int) {
-        lessThan(value)
-    }
-
-    // less than or equal: target > value
-    fun lte(value: Int) {
-        lessOrEqualThan(value)
-    }
+    inline fun gt(value: Int) = greaterThan(value)
+    inline fun gte(value: Int) = greaterOrEqualThan(value)
+    inline fun lt(value: Int) = lessThan(value)
+    inline fun lte(value: Int) = lessOrEqualThan(value)
 
     fun greaterThan(value: Int) {
-
+        when {
+            target == value -> fail("$target > $value", "$target == $value")
+            target < value ->  fail("$target > $value", "$target < $value")
+            else -> return
+        }
     }
+
+    fun greaterOrEqualThan(value: Int) = if(target < value) fail("$target >= $value", "$target < $value")
 
     fun lessThan(value: Int) {
-
+        when {
+            target == value -> fail("$target < $value", "$target == $value")
+            target > value ->  fail("$target < $value", "$target > $value")
+            else -> return
+        }
     }
+
+    fun lessOrEqualThan(value: Int)  = if(target > value) fail("$target <= $value", "$target > $value")
+
+}
+
+class IntNotBeMatcher(target: Int): AnyNotBeMatcher<Int>(target){
+
+    inline fun gt(value: Int) = greaterThan(value)
+    inline fun gte(value: Int) = greaterOrEqualThan(value)
+    inline fun lt(value: Int) = lessThan(value)
+    inline fun lte(value: Int) = lessOrEqualThan(value)
+
+    fun greaterThan(value: Int) = if(target > value) fail("!($target > $value)", "$target > $value")
 
     fun greaterOrEqualThan(value: Int) {
-
+        when {
+            target == value -> fail("!($target >= $value)", "$target == $value")
+            target > value ->  fail("!($target >= $value)", "$target > $value")
+            else -> return
+        }
     }
+
+    fun lessThan(value: Int) = if(target < value) fail("!($target < $value)", "$target < $value")
 
     fun lessOrEqualThan(value: Int) {
-
+        when {
+            target == value -> fail("!($target <= $value)", "$target == $value")
+            target < value ->  fail("!($target <= $value)", "$target < $value")
+            else -> return
+        }
     }
-
 }

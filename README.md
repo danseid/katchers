@@ -43,7 +43,8 @@ Match the result to any object in a list
     "abc" should be any of("cab", "bac", "abc") //✔
     4 should !be any of(1,2,3)                  //✔
     4 should !be any of (1,2,4)                 //✘
-
+###Int
+Matchers to use on Int objects
 ###String
 Matchers to use on string objects
 ####have | !have length

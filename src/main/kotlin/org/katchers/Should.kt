@@ -35,6 +35,10 @@ public fun String.should(val verb: NOTEND): StringNotEndMatcher = StringNotEndMa
 public fun String.should(val verb: CONTAIN): StringContainMatcher = StringContainMatcher(this)
 public fun String.should(val verb: NOTCONTAIN): StringNotContainMatcher = StringNotContainMatcher(this)
 
+// Int should be
+public inline fun Int.should(val verb: BE): IntBeMatcher = IntBeMatcher(this)
+public inline fun Int.should(val verb: NOTBE): IntNotBeMatcher = IntNotBeMatcher(this)
+
 //() -> Unit should fail
 public fun <R>jet.Function0<R>.should(verb: FAIL): FunctionFailMatcher<R> = FunctionFailMatcher(this)
 public fun <R>jet.Function0<R>.should(verb: NOTFAIL): FunctionNotFailMatcher<R> = FunctionNotFailMatcher(this)
