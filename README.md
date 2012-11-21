@@ -45,7 +45,7 @@ Match the result to any object in a list
     4 should !be any of (1,2,4)                 //✘
 
 ###String
-Matchers to use on String objects
+Matchers to use on string objects
 ####have | !have length
     "string" should have length 6  //✔
     "" should !have length 1       //✔
@@ -69,7 +69,7 @@ Matchers to use on String objects
 
 
 ###Function
-Matchers to use on () : R -> Function
+Matchers to use on () : R -> function
 ####fail | !fail with
     {throw NullPointerException()} should fail with NullPointerException()    //✔
     {1 should be equal 1} should !fail with AssertionError()                  //✔
