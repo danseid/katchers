@@ -22,16 +22,17 @@ import kotlin.test.*
  * @since 2012/11/19
  */
 
-trait Matcher {
+trait Matcher<T> {
+    open val target : T
     inline protected fun notSupported(): Unit = fail("Not Supported Condition ")
 }
 
-open class AnyBeMatcher<T>(val target: T): Matcher {
+open class AnyBeMatcher<T>(override val target: T): Matcher<T> {
     inline fun equal(value: T) = if (value != target) fail(value, target)
     inline fun any(values: List<T>) = if(!values.any { it == target }) fail("any of $values", target)
 }
 
-open class AnyNotBeMatcher<T>(val target: T): Matcher {
+open class AnyNotBeMatcher<T>(override val target: T): Matcher<T> {
     inline fun equal(value: T) = if (value == target) fail(value, target)
     inline fun any(values: List<T>) = if(values any { it == target }) fail("not any of $values", target)
 }

@@ -25,6 +25,7 @@ Suite.SuiteClasses(
         javaClass<AnyMatchersTest>(),
         javaClass<StringMatcherTest>(),
         javaClass<ShouldTest>(),
+        javaClass<MustTest>(),
         javaClass<FunctionMatcherTest>(),
         javaClass<NumberMatcherTest>()
 )

@@ -22,8 +22,7 @@ package org.katchers
 
 
 class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
-    {
-    }
+
     inline fun gt(value: Number) = greaterThan(value)
     inline fun gte(value: Number) = greaterOrEqualThan(value)
     inline fun lt(value: Number) = lessThan(value)
@@ -49,6 +48,10 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
     }
 
     fun lessOrEqualThan(value: Number) = if(target compare value > 0) fail("$target <= $value", "$target > $value")
+
+    fun inRange(val r: IntRange) {
+      if (target !in r) fail("$target should be in [${r.start},${r.end}]", "$target is not in [${r.start},${r.end}]")
+    }
 
 }
 
@@ -79,6 +82,7 @@ class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
         }
     }
 }
+
 fun Number.compare(that: Number): Int {
     when(this){
         is Int -> {
@@ -156,6 +160,8 @@ fun Number.compare(that: Number): Int {
         else -> throw ClassCastException()
     }
 }
+
+
 
 
 
