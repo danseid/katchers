@@ -75,6 +75,15 @@ Matchers to use on number objects like Int, Float, Double ...
     1 should !be lte 0             //✔
     1 should !be lte 1             //✘
     1 should  be lte 0             //✘
+#### be | !be in range()
+    1 should be in range(1..2)              //✔
+    1 should be in range(1.0..2.0)          //✔
+    1.1 should be in range(1..2)            //✔
+    1 should !be in range(1.1..2.0)         //✔
+    1.0 should !be in range(1.1..2.0)       //✔
+    1.99 should !be in range(2..3)          //✔
+    1.99 should !be in range(1.991..1.992)  //✔
+    1 should !be in range(0.9..0.99);       //✔
 
 ###String
 Matchers to use on string objects

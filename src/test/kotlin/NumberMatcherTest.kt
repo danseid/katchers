@@ -33,6 +33,10 @@ public class NumberMatcherTest {
         1 should be gt 0.9
         0.9 should !be gt 1
 
+        { 0.9 should be gt 1 } should fail with assertionError;
+        { 1 should be gt 1.1 } should fail with assertionError;
+        { 1.1 should !be gt 1 } should fail with assertionError;
+        { 1 should !be gt 0.9 } should fail with assertionError;
 
 
     }
@@ -48,6 +52,15 @@ public class NumberMatcherTest {
         { 1 should !be gte 1 } should fail with assertionError;
         { 1 should !be gte 0 } should fail with assertionError;
         { 1 should !be gte 2 } should !fail with assertionError;
+
+        1.0 should be gte 1
+        1.1 should be gte 1
+        1 should be gte 0.9
+        1 should be gte 1
+        1.0 should be gte 1.0
+        1.0 should be gte 0.9
+
+
     }
 
     test fun shouldBeLessThan() {

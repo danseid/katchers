@@ -22,10 +22,6 @@ import  org.katchers.*
 
 public class AnyMatchersTest {
     test fun integers() {
-        for(f in 1..2.0){
-
-        }
-
         1 should be equal 1
         1 should !be equal 2
 

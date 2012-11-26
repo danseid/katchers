@@ -22,14 +22,12 @@ package org.katchers
 
 
 class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
-
     inline fun gt(value: Number) = greaterThan(value)
     inline fun gte(value: Number) = greaterOrEqualThan(value)
     inline fun lt(value: Number) = lessThan(value)
     inline fun lte(value: Number) = lessOrEqualThan(value)
 
-    fun greaterThan(value: jet.Number) {
-
+    inline fun greaterThan(value: jet.Number) {
         when {
             target == value -> fail("$target > $value", "$target == $value")
             target compare value < 0 ->  fail("$target > $value", "$target < $value")
@@ -37,9 +35,9 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
         }
     }
 
-    fun greaterOrEqualThan(value: Number) = if(target compare value < 0) fail("$target >= $value", "$target < $value")
+    inline fun greaterOrEqualThan(value: Number) = if(target compare value < 0) fail("$target >= $value", "$target < $value")
 
-    fun lessThan(value: Number) {
+    inline fun lessThan(value: Number) {
         when {
             target == value -> fail("$target < $value", "$target == $value")
             target compare value > 0  ->  fail("$target < $value", "$target > $value")
@@ -47,9 +45,9 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
         }
     }
 
-    fun lessOrEqualThan(value: Number) = if(target compare value > 0) fail("$target <= $value", "$target > $value")
+    inline fun lessOrEqualThan(value: Number) = if(target compare value > 0) fail("$target <= $value", "$target > $value")
 
-    fun inRange(val r: IntRange) {
+    inline fun inRange(val r: IntRange) {
       if (target !in r) fail("$target should be in [${r.start},${r.end}]", "$target is not in [${r.start},${r.end}]")
     }
 
@@ -62,9 +60,11 @@ class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
     inline fun lt(value: Number) = lessThan(value)
     inline fun lte(value: Number) = lessOrEqualThan(value)
 
-    fun greaterThan(value: Number) = if(target compare value > 0) fail("!($target > $value)", "$target > $value")
+    inline fun greaterThan(value: Number) = if(target compare value > 0) {
+        fail("!($target > $value)", "$target > $value")
+    }
 
-    fun greaterOrEqualThan(value: Number) {
+    inline fun greaterOrEqualThan(value: Number) {
         when {
             target == value -> fail("!($target >= $value)", "$target == $value")
             target compare value > 0 ->  fail("!($target >= $value)", "$target > $value")
@@ -72,9 +72,9 @@ class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
         }
     }
 
-    fun lessThan(value: Number) = if(target compare value < 0) fail("!($target < $value)", "$target < $value")
+    inline fun lessThan(value: Number) = if(target compare value < 0) fail("!($target < $value)", "$target < $value")
 
-    fun lessOrEqualThan(value: Number) {
+    inline fun lessOrEqualThan(value: Number) {
         when {
             target == value -> fail("!($target <= $value)", "$target == $value")
             target compare value < 0 ->  fail("!($target <= $value)", "$target < $value")
@@ -83,81 +83,31 @@ class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
     }
 }
 
+/**
+ * compares Number with another Number. This function is using Double.compareTo function
+ */
+
 fun Number.compare(that: Number): Int {
-    when(this){
-        is Int -> {
-            val it = this as Int
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
+    fun compare(d: Double, n: Number): Int {
+        return when(n){
+            is Double -> d.compareTo(n)
+            is Float  -> d.compareTo(n)
+            is Long   -> d.compareTo(n)
+            is Int    -> d.compareTo(n)
+            is Short  -> d.compareTo(n)
+            is Byte   -> d.compareTo(n)
+            else      -> throw ClassCastException()
         }
-        is Double -> {
-            val it = this as Double
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
-        }
-        is Long -> {
-            val it = this as Long
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
-        }
-        is Float -> {
-            val it = this as Float
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
-        }
-        is Short -> {
-            val it = this as Short
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
-        }
-        is Byte -> {
-            val it = this as Byte
-            when(that){
-                is Double -> return (it.compareTo(that as Double))
-                is Float -> return (it.compareTo(that as Float))
-                is Long -> return (it.compareTo(that as Long))
-                is Int -> return (it.compareTo(that as Int))
-                is Short -> return (it.compareTo(that as Short))
-                is Byte -> return (it.compareTo(that as Byte))
-                else -> throw ClassCastException()
-            }
-        }
-        else -> throw ClassCastException()
+    }
+
+    return when(this){ // casting toDouble because of http://youtrack.jetbrains.com/issue/KT-3078
+        is Int    -> compare(this.toDouble(), that)
+        is Double -> compare(this, that)
+        is Long   -> compare(this.toDouble(), that)
+        is Float  -> compare(this.toDouble(), that)
+        is Short  -> compare(this.toDouble(), that)
+        is Byte   -> compare(this.toDouble(), that)
+        else      -> throw ClassCastException()
     }
 }
 
