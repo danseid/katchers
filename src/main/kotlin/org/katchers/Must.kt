@@ -21,8 +21,11 @@ package org.katchers
  */
 
 // Any must be
+// Any must
 public fun <T>T.must(val verb: BE): AnyBeMatcher<T> = AnyBeMatcher(this)
 public fun <T>T.must(val verb: NOTBE): AnyNotBeMatcher<T> = AnyNotBeMatcher(this)
+public fun <T>T.must(val verb: MATCH): AnyMatchMatcher<T> = AnyMatchMatcher(this)
+public fun <T>T.must(val verb: NOTMATCH): AnyNotMatchMatcher<T> = AnyNotMatchMatcher(this);
 
 // String must have | start | end | contain
 public fun String.must(val verb: HAVE): StringHaveMatcher = StringHaveMatcher(this)
@@ -40,5 +43,5 @@ public inline fun Number.must(val verb: NOTBE): NumberNotBeMatcher = NumberNotBe
 
 
 //() -> Unit must fail
-public fun <T: () -> Any>T.must(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)
 public fun <T: () -> Any>T.must(verb: NOTFAIL): FunctionNotFailMatcher<T> = FunctionNotFailMatcher(this)
+public fun <T: () -> Any>T.must(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)

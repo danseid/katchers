@@ -148,7 +148,7 @@ Matchers to use on string objects
 
 
 ###Function
-Matchers to use on () : R -> function
+Matchers to use on "() -> Any" function
 ####fail | !fail with
 ```kotlin
     {throw NullPointerException()} should fail with NullPointerException()    //✔
