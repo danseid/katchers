@@ -31,11 +31,13 @@ All examples are using __should__, but it can also be replaced with __must__
 Any matchers may be used on any type of object.
 ####be | !be  equal
 Equal <matchfunction> should only be used on types, that implement equals function correctly
+```kotlin
+1 should be equal 1   //✔
+2 should !be equal 1  //✔
+"string" should be equal "string" //✔
+"string" should be equal "str"    //✘
+```
 
-    1 should be equal 1   //✔
-    2 should !be equal 1  //✔
-    "string" should be equal "string" //✔
-    "string" should be equal "str"    //✘
 ####be | !be  any
 Match the result to any object in a list
 
@@ -45,6 +47,21 @@ Match the result to any object in a list
     4 should !be any of(1,2,3)                  //✔
     4 should !be any of (1,2,4)                 //✘
 
+####match | !match condition
+Match condition to any object
+```kotlin
+1 should match condition {this > 0 && this < 2}    //✔
+
+object book {
+  val title = "Title"
+  val author = "Author"
+}
+
+book should match condition { title == "Title" }                       //✔
+book should match condition { title == "Title" && author == "Author" } //✔
+book should !match condition { title == "T" && author == "Author" }    //✔
+book should !match condition { title == "Title" && author == "Author"  //✘
+```
 ###Number
 Matchers to use on number objects like Int, Float, Double ...
 #### be | !be gt |greaterThan

@@ -24,6 +24,7 @@ public class ShouldTest {
     test fun shouldBeAnyMatcher() {
         assertTrue(Any().should(be) is AnyBeMatcher<Any>)
         assertTrue(Any().should(!be) is AnyNotBeMatcher<Any>)
+        val a = {(x: Int) -> x > 0}
     }
 
     test fun shouldBeStringMatcher() {
@@ -42,8 +43,6 @@ public class ShouldTest {
     test fun shouldBeFunctionMatcher() {
         {} should !fail with AssertionError();
         {1 > 0} should !fail with AssertionError();
-        {1 / 0} should fail()
-
         try {
             {throw NullPointerException()} should !fail with NullPointerException()
         } catch (e: Throwable) {

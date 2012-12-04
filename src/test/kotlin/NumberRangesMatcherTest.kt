@@ -28,7 +28,7 @@ public class NumberRangesMatcherTest {
         1.1 should be in range(1..2)
         1.1 should be in range(1.0..2.0)
         1 should be in range(0.9..1.1);
-        {1 should be in range(1.1..1.2)} should fail with assertionError;
+        {1 should be in range(1.1..1.2)} should fail with assertionError
         {1.09 should be in range(1.1..1.2)} should fail with assertionError
         {1.201 should be in range(1.1..1.2)} should fail with assertionError
     }
@@ -39,7 +39,7 @@ public class NumberRangesMatcherTest {
         1.99 should !be in range(2..3)
         1.99 should !be in range(1.991..1.992)
         1 should !be in range(0.9..0.99);
-        {1.001 should !be in range(1..2)} should fail with assertionError;
+        {1.001 should !be in range(1..2)} should fail with assertionError
         {1.11 should !be in range(1.10..1.12)} should fail with assertionError
         {1.1999 should !be in range(1.1..1.2)} should fail with assertionError
 

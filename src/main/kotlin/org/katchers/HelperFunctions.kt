@@ -30,6 +30,4 @@ inline fun <T>fail(expected: T, got: T): Unit {
     """)
 }
 
-inline fun fail() = fail
-
 inline fun <T>of(vararg values: T): List<T> = values.toList()
