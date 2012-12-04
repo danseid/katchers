@@ -38,18 +38,15 @@ public class NumbersTest {
         val oneList: List<Number> = arrayList<Number>(oneD, oneF, oneI, oneL, oneS, oneB)
         val onePointOneList: List<Number> = arrayList<Number>(onePointOneD, onePointOneF)
         for(n1 in oneList) for(n2 in oneList) {
-            println("$n1, $n2")
             (n1 compare n2) should be equal 0
         }
 
 
         for(n1 in oneList) for(n2 in onePointOneList) {
-                println("$n1(${n1.javaClass}), $n2(${n2.javaClass}) = ${n1 compare n2}")
                 (n1 compare n2) should be equal -1
             }
 
         for(n1 in onePointOneList) for(n2 in oneList) {
-                println("$n1(${n1.javaClass}), $n2(${n2.javaClass}) = ${n1 compare n2}")
                 (n1 compare n2) should be equal 1
             }
     }

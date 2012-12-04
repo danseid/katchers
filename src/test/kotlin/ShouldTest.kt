@@ -40,10 +40,14 @@ public class ShouldTest {
     }
 
     test fun shouldBeFunctionMatcher() {
-        assertTrue({}.should(fail) is FunctionFailMatcher<Unit>)
-        assertTrue({}.should(!fail) is FunctionNotFailMatcher<Unit>)
-        assertTrue({"string"}.should(fail) is FunctionFailMatcher<String>)
-        assertTrue({"string"}.should(!fail) is FunctionNotFailMatcher<String>)
+        {} should !fail with AssertionError();
+        {1 > 0} should !fail with AssertionError();
+        {1 / 0} should fail()
 
+        try {
+            {throw NullPointerException()} should !fail with NullPointerException()
+        } catch (e: Throwable) {
+             assertTrue(e is AssertionError)
+        }
     }
 } 

@@ -20,7 +20,7 @@ package org.katchers
  * @since 2012/11/20
  */
 
-class FunctionFailMatcher<R>(override val target: () -> R): Matcher<() -> R>{
+class FunctionFailMatcher<T: () -> Any>(override val target: T): Matcher<T>{
     fun with(error: Throwable) {
         var failed = true // assume it will fail
         try {
@@ -33,7 +33,7 @@ class FunctionFailMatcher<R>(override val target: () -> R): Matcher<() -> R>{
         }
     }
 }
-class FunctionNotFailMatcher<R>(override val target: () -> R): Matcher<() -> R>{
+class FunctionNotFailMatcher<T: () -> Any>(override val target: T): Matcher<T>{
     fun with(error: Throwable) {
         try {
             target()

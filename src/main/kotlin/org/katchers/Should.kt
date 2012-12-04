@@ -21,9 +21,12 @@ package org.katchers
  * Should Matcher Functions
  */
 
-// Any should be
+// Any should
 public fun <T>T.should(val verb: BE): AnyBeMatcher<T> = AnyBeMatcher(this)
 public fun <T>T.should(val verb: NOTBE): AnyNotBeMatcher<T> = AnyNotBeMatcher(this)
+public fun <T>T.should(val verb: MATCH): AnyMatchMatcher<T> = AnyMatchMatcher(this)
+public fun <T>T.should(val verb: NOTMATCH): AnyNotMatchMatcher<T> = AnyNotMatchMatcher(this);
+public fun <T>T.should(val cond: T.() -> Boolean): Unit =  this.should(match).condition(cond)
 
 // String should have | start | end | contain
 public fun String.should(val verb: HAVE): StringHaveMatcher = StringHaveMatcher(this)
@@ -41,5 +44,5 @@ public inline fun Number.should(val verb: NOTBE): NumberNotBeMatcher = NumberNot
 
 
 //() -> Unit should fail
-public fun <R>jet.Function0<R>.should(verb: FAIL): FunctionFailMatcher<R> = FunctionFailMatcher(this)
-public fun <R>jet.Function0<R>.should(verb: NOTFAIL): FunctionNotFailMatcher<R> = FunctionNotFailMatcher(this)
+public fun <T: () -> Any>T.should(verb: NOTFAIL): FunctionNotFailMatcher<T> = FunctionNotFailMatcher(this)
+public fun <T: () -> Any>T.should(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)

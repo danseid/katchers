@@ -41,11 +41,11 @@ public class MustTest {
         assertTrue(String().must(!have) is StringNotHaveMatcher)
     }
 
-    test fun mustBeFunctionMatcher() {
-        assertTrue({}.must(fail) is FunctionFailMatcher<Unit>)
-        assertTrue({}.must(!fail) is FunctionNotFailMatcher<Unit>)
-        assertTrue({"string"}.must(fail) is FunctionFailMatcher<String>)
-        assertTrue({"string"}.must(!fail) is FunctionNotFailMatcher<String>)
-
-    }
+//    test fun mustBeFunctionMatcher() {
+//        assertTrue({}.must(fail) is FunctionFailMatcher<Unit>)
+//        assertTrue({}.must(!fail) is FunctionNotFailMatcher<Unit>)
+//        assertTrue({"string"}.must(fail) is FunctionFailMatcher<String>)
+//        assertTrue({"string"}.must(!fail) is FunctionNotFailMatcher<String>)
+//
+//    }
 }

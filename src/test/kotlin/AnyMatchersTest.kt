@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import org.junit.Test as test
-import  org.katchers.*
+import org.katchers.*
+
 /**
  * @author Daniel Seidler
  * @since 2012/11/21
@@ -47,5 +48,23 @@ public class AnyMatchersTest {
         { "a" should be any of("a", "b", "c") } should !fail with AssertionError();
         { "d" should !be any of("a", "b", "c") } should !fail with AssertionError();
         { "a" should !be any of("a", "b", "c") } should fail with AssertionError()
+    }
+
+    test fun condition() {
+        object book {
+            val title = "Title"
+            val author = "Author"
+        }
+
+        book should match condition { title == "Title" && author == "Author" }
+        book should match condition { title == "" || author == "Author" }
+        book should match condition { title == "Title" || author == "" }
+        book should !match condition { title == "T" && author == "Author" }
+
+        { book should match condition { title == "Titl" && author == "Author" } } should fail with assertionError
+        { book should !match condition { title == "Title" && author == "Author" } } should fail with assertionError
+
+        1 should match condition {this > 0 && this < 2}
+        1 should !match condition {this < 1 || this > 1}
     }
 } 

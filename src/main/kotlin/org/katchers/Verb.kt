@@ -68,6 +68,14 @@ public class NOTFAIL: Verb {
     fun not() = fail
 }
 
+public class FAILFUN: Verb {
+    fun not() = notfailfun
+}
+
+public class NOTFAILFUN: Verb {
+    fun not() = failfun
+}
+
 /* VALUES */
 val be = BE()
 val notbe = NOTBE()
@@ -83,3 +91,5 @@ val match = MATCH()
 val notmatch = NOTMATCH()
 val fail = FAIL()
 val notfail = NOTFAIL()
+val failfun = FAILFUN()
+val notfailfun = NOTFAILFUN()

@@ -52,8 +52,4 @@ public class FunctionMatcherTest {
             if(!assertErrorThrown) fail("AssertionError", "none")
         }
     }
-
-    test fun tf() {
-        {(): Unit -> println({(x: Int, y: Int) : String -> "$x + $y" }(1, 2)) }
-    }
 }

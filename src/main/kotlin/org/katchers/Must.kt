@@ -40,5 +40,5 @@ public inline fun Number.must(val verb: NOTBE): NumberNotBeMatcher = NumberNotBe
 
 
 //() -> Unit must fail
-public fun <R>jet.Function0<R>.must(verb: FAIL): FunctionFailMatcher<R> = FunctionFailMatcher(this)
-public fun <R>jet.Function0<R>.must(verb: NOTFAIL): FunctionNotFailMatcher<R> = FunctionNotFailMatcher(this)
+public fun <T: () -> Any>T.must(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)
+public fun <T: () -> Any>T.must(verb: NOTFAIL): FunctionNotFailMatcher<T> = FunctionNotFailMatcher(this)

@@ -23,7 +23,7 @@ import kotlin.test.*
  */
 
 trait Matcher<T> {
-    open val target : T
+    open val target: T
     inline protected fun notSupported(): Unit = fail("Not Supported Condition ")
 }
 
@@ -35,6 +35,14 @@ open class AnyBeMatcher<T>(override val target: T): Matcher<T> {
 open class AnyNotBeMatcher<T>(override val target: T): Matcher<T> {
     inline fun equal(value: T) = if (value == target) fail(value, target)
     inline fun any(values: List<T>) = if(values any { it == target }) fail("not any of $values", target)
+}
+
+open class AnyMatchMatcher<T>(override val target: T): Matcher<T> {
+    inline fun condition(match: T.() -> Boolean) = if(!target.match()) fail()
+}
+
+open class AnyNotMatchMatcher<T>(override val target: T): Matcher<T> {
+    inline fun condition(match: T.() -> Boolean) = if(target.match()) fail()
 }
 
 

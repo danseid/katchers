@@ -101,7 +101,7 @@ fun Number.compare(that: Number): Int {
     }
 
     return when(this){ // casting toDouble because of http://youtrack.jetbrains.com/issue/KT-3078
-        is Int    -> compare(this.toDouble(), that)
+        is Int  -> compare(this.toDouble(), that)
         is Double -> compare(this, that)
         is Long   -> compare(this.toDouble(), that)
         is Float  -> compare(this.toDouble(), that)
