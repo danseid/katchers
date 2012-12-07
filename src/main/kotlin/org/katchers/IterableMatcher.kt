@@ -13,26 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import org.junit.runners.Suite;
-import org.junit.runner.RunWith;
+package org.katchers
+
 /**
  * @author Daniel Seidler
- * @since 2012/11/21
+ * @since 2012/12/06
  */
-RunWith(javaClass<Suite>())
-Suite.SuiteClasses(
-        javaClass<VerbTest>(),
-        javaClass<AnyMatchersTest>(),
-        javaClass<StringMatcherTest>(),
-        javaClass<ShouldTest>(),
-        javaClass<MustTest>(),
-        javaClass<FunctionMatcherTest>(),
-        javaClass<NumberMatcherTest>(),
-        javaClass<NumbersTest>(),
-        javaClass<NumberRangesMatcherTest>(),
-        javaClass<IterableMatcherTest>(),
-        javaClass<MapMatcherTest>()
 
+class IterableContainMatcher<T>(override val target: Iterable<T>): Matcher<Iterable<T>>{
+    fun item(el: T) = if(!target.contains(el)) fail("$target contains $el", "$target doesn't contain $el")
+}
 
-)
-public class AllTest {}
+class IterableNotContainMatcher<T>(override val target: Iterable<T>): Matcher<Iterable<T>>{
+    fun item(el: T) = if(target.contains(el)) fail("$target should not contain $el", "$target contains $el")
+}

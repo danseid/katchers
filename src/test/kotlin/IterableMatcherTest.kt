@@ -13,26 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import org.junit.runners.Suite;
-import org.junit.runner.RunWith;
+import org.junit.Test as test
+import org.katchers.*
+
 /**
  * @author Daniel Seidler
- * @since 2012/11/21
+ * @since 2012/12/06
  */
-RunWith(javaClass<Suite>())
-Suite.SuiteClasses(
-        javaClass<VerbTest>(),
-        javaClass<AnyMatchersTest>(),
-        javaClass<StringMatcherTest>(),
-        javaClass<ShouldTest>(),
-        javaClass<MustTest>(),
-        javaClass<FunctionMatcherTest>(),
-        javaClass<NumberMatcherTest>(),
-        javaClass<NumbersTest>(),
-        javaClass<NumberRangesMatcherTest>(),
-        javaClass<IterableMatcherTest>(),
-        javaClass<MapMatcherTest>()
+public class IterableMatcherTest {
 
+    test fun listContainsElement() {
+        listOf(1, 2, 3) should contain item 3
+        setOf(1, 2, 3) should contain item 2
+        listOf("1", "2") should contain item "2"
+        { listOf(1, 2, 3) should contain item 4 } should fail with assertionError
 
-)
-public class AllTest {}
+        listOf(1, 2, 3) should !contain item 4
+        listOf("1", "2") should !contain item "3"
+        { listOf(1, 2, 3) should !contain item 3 } should fail with assertionError
+    }
+
+}

@@ -26,13 +26,13 @@ public class NumbersTest {
      * Test Number.compare function
      */
     test fun compareNumbers() {
-        val oneD = 1.0 as Double
+        val oneD = 1.0
         val oneF = oneD.toFloat()
         val oneI = oneD.toInt()
         val oneL = oneD.toLong()
         val oneS = oneD.toShort()
         val oneB = oneD.toByte()
-        val onePointOneD = 1.1 as Double
+        val onePointOneD = 1.1
         val onePointOneF = (1.1).toFloat()
 
         val oneList: List<Number> = arrayList<Number>(oneD, oneF, oneI, oneL, oneS, oneB)
