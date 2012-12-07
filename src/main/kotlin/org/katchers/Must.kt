@@ -48,6 +48,8 @@ public fun <T: () -> Any>T.must(verb: FAIL): FunctionFailMatcher<T> = FunctionFa
 //Collection
 public fun <T>Collection<T>.must(verb: CONTAIN): CollectionContainMatcher<T> = CollectionContainMatcher<T>(this)
 public fun <T>Collection<T>.must(verb: NOTCONTAIN): CollectionNotContainMatcher<T> = CollectionNotContainMatcher<T>(this)
+public fun <T>Collection<T>.must(verb: HAVE): CollectionHaveMatcher<T> = CollectionHaveMatcher<T>(this)
+public fun <T>Collection<T>.must(verb: NOTHAVE): CollectionNotHaveMatcher<T> = CollectionNotHaveMatcher<T>(this)
 
 //Maps
 public fun <R,T>Map<R,T>.must(verb: CONTAIN): MapContainMatcher<R,T> = MapContainMatcher<R,T>(this)

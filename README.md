@@ -155,6 +155,13 @@ Matchers to use on ```Collection<T>``` object
         listOf("1", "2") should contain item "2"    //✔
         listOf(1, 2, 3) should contain item 4       //✘
 ```
+####have | !have size
+```kotlin
+        listOf(1,2,3) should have size 3     //✔
+        listOf(1,2,3) should !have size 4    //✔
+        listOf(1,2,3) should !have size 3    //✘
+        listOf(1,2,3) should have size 2     //✘
+```
 
 ###Map
 Matchers to use on ```Map<K,V>``` object
