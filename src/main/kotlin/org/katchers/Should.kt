@@ -48,13 +48,11 @@ public inline fun Number.should(val verb: NOTBE): NumberNotBeMatcher = NumberNot
 public fun <T: () -> Any>T.should(verb: NOTFAIL): FunctionNotFailMatcher<T> = FunctionNotFailMatcher(this)
 public fun <T: () -> Any>T.should(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)
 
+//Collection
+public fun <T>Collection<T>.should(verb: CONTAIN): CollectionContainMatcher<T> = CollectionContainMatcher<T>(this)
+public fun <T>Collection<T>.should(verb: NOTCONTAIN): CollectionNotContainMatcher<T> = CollectionNotContainMatcher<T>(this)
 
-//Iterables
-public fun <T>Iterable<T>.should(verb: CONTAIN): IterableContainMatcher<T> = IterableContainMatcher<T>(this)
-public fun <T>Iterable<T>.should(verb: NOTCONTAIN): IterableNotContainMatcher<T> = IterableNotContainMatcher<T>(this)
-
-
-//Maps
+//Map
 public fun <R,T>Map<R,T>.should(verb: CONTAIN): MapContainMatcher<R,T> = MapContainMatcher<R,T>(this)
 public fun <R,T>Map<R,T>.should(verb: NOTCONTAIN): MapNotContainMatcher<R,T> = MapNotContainMatcher<R,T>(this)
 

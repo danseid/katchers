@@ -146,18 +146,18 @@ Matchers to use on string objects
     "string" should contain all of("s", "t", "a")  //✘
 ```
 
-###Iterable
-Matchers to use on Iterable<T>
+###Collection
+Matchers to use on ```Collection<T>``` object
 ####contain | !contain item
 ```kotlin
         listOf(1, 2, 3) should contain item 3       //✔
         setOf(1, 2, 3) should contain item 2        //✔
         listOf("1", "2") should contain item "2"    //✔
-        listOf(1, 2, 3) should contain item 4
+        listOf(1, 2, 3) should contain item 4       //✘
 ```
 
 ###Map
-Matchers to use on Map<K,V>
+Matchers to use on ```Map<K,V>``` object
 ####contain | !contain item
 ```kotlin
         mapOf(1 to "1", 2 to "2", 3 to "3") should contain item (1 to "1")    //✔

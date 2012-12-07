@@ -30,7 +30,7 @@ Suite.SuiteClasses(
         javaClass<NumberMatcherTest>(),
         javaClass<NumbersTest>(),
         javaClass<NumberRangesMatcherTest>(),
-        javaClass<IterableMatcherTest>(),
+        javaClass<CollectionMatcherTest>(),
         javaClass<MapMatcherTest>()
 
 

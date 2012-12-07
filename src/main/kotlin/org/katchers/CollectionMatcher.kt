@@ -19,3 +19,12 @@ package org.katchers
  * @author Daniel Seidler
  * @since 2012/12/07
  */
+
+
+class CollectionContainMatcher<T>(override val target: Collection<T>): Matcher<Collection<T>>{
+    fun item(el: T) = if(!target.contains(el)) fail("$target contains $el", "$target doesn't contain $el")
+}
+
+class CollectionNotContainMatcher<T>(override val target: Collection<T>): Matcher<Collection<T>>{
+    fun item(el: T) = if(target.contains(el)) fail("$target should not contain $el", "$target contains $el")
+}
