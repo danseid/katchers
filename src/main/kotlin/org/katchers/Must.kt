@@ -20,7 +20,6 @@ package org.katchers
  * @since 2012/11/21
  */
 
-// Any must be
 // Any must
 public fun <T>T.must(val verb: BE): AnyBeMatcher<T> = AnyBeMatcher(this)
 public fun <T>T.must(val verb: NOTBE): AnyNotBeMatcher<T> = AnyNotBeMatcher(this)
@@ -41,6 +40,7 @@ public fun String.must(val verb: NOTCONTAIN): StringNotContainMatcher = StringNo
 public inline fun Number.must(val verb: BE): NumberBeMatcher = NumberBeMatcher(this)
 public inline fun Number.must(val verb: NOTBE): NumberNotBeMatcher = NumberNotBeMatcher(this)
 
+
 //() -> Unit must fail
 public fun <T: () -> Any>T.must(verb: NOTFAIL): FunctionNotFailMatcher<T> = FunctionNotFailMatcher(this)
 public fun <T: () -> Any>T.must(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)
@@ -51,6 +51,8 @@ public fun <T>Collection<T>.must(verb: NOTCONTAIN): CollectionNotContainMatcher<
 public fun <T>Collection<T>.must(verb: HAVE): CollectionHaveMatcher<T> = CollectionHaveMatcher<T>(this)
 public fun <T>Collection<T>.must(verb: NOTHAVE): CollectionNotHaveMatcher<T> = CollectionNotHaveMatcher<T>(this)
 
-//Maps
-public fun <R,T>Map<R,T>.must(verb: CONTAIN): MapContainMatcher<R,T> = MapContainMatcher<R,T>(this)
-public fun <R,T>Map<R,T>.must(verb: NOTCONTAIN): MapNotContainMatcher<R,T> = MapNotContainMatcher<R,T>(this)
+//Map
+public fun <K,V>Map<K,V>.must(verb: CONTAIN): MapContainMatcher<K,V> = MapContainMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.must(verb: NOTCONTAIN): MapNotContainMatcher<K,V> = MapNotContainMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.must(verb: HAVE): MapHaveMatcher<K,V> = MapHaveMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.must(verb: NOTHAVE): MapNotHaveMatcher<K,V> = MapNotHaveMatcher<K,V>(this)

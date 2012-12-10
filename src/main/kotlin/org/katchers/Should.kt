@@ -55,9 +55,10 @@ public fun <T>Collection<T>.should(verb: HAVE): CollectionHaveMatcher<T> = Colle
 public fun <T>Collection<T>.should(verb: NOTHAVE): CollectionNotHaveMatcher<T> = CollectionNotHaveMatcher<T>(this)
 
 //Map
-public fun <R,T>Map<R,T>.should(verb: CONTAIN): MapContainMatcher<R,T> = MapContainMatcher<R,T>(this)
-public fun <R,T>Map<R,T>.should(verb: NOTCONTAIN): MapNotContainMatcher<R,T> = MapNotContainMatcher<R,T>(this)
-
+public fun <K,V>Map<K,V>.should(verb: CONTAIN): MapContainMatcher<K,V> = MapContainMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.should(verb: NOTCONTAIN): MapNotContainMatcher<K,V> = MapNotContainMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.should(verb: HAVE): MapHaveMatcher<K,V> = MapHaveMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.should(verb: NOTHAVE): MapNotHaveMatcher<K,V> = MapNotHaveMatcher<K,V>(this)
 
 
 

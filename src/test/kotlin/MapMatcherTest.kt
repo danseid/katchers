@@ -25,31 +25,43 @@ public class MapMatcherTest {
     test fun mapShouldContainItem() {
         mapOf(1 to "1", 2 to "2", 3 to "3") should contain item (1 to "1")
         mapOf(1 to 2, 2 to 3, 4 to 5) should contain item (1 to 2)
-        {mapOf(1 to 2, 2 to 3, 4 to 5) should contain item (1 to 3)} should fail with assertionError
+        { mapOf(1 to 2, 2 to 3, 4 to 5) should contain item (1 to 3) } should fail with assertionError
 
         mapOf(1 to "1", 2 to "2", 3 to "3") should !contain item (1 to "2")
         mapOf(1 to 2, 2 to 3, 4 to 5) should !contain item (1 to 3)
-        {mapOf(1 to 2, 2 to 3, 4 to 5) should !contain item (1 to 2)} should fail with assertionError
+        { mapOf(1 to 2, 2 to 3, 4 to 5) should !contain item (1 to 2) } should fail with assertionError
+    }
+
+    test fun mapShouldhaveSize() {
+        mapOf(1 to 1) should have size 1
+        mapOf(1 to 1) should !have size 0
+
+        { mapOf(1 to 1) should have size 0 } should fail with assertionError
+        { mapOf(1 to 1) should have size 2 } should fail with assertionError
+        { mapOf(1 to 1) should !have size 1 } should fail with assertionError
+
+
+
     }
 
     test fun mapShouldContainKey() {
         mapOf(1 to 2, 3 to 4, 5 to 6) should contain key 1
         mapOf("1" to 2) should contain key "1"
-        {mapOf(1 to 2) should contain key 2} should fail with assertionError
+        { mapOf(1 to 2) should contain key 2 } should fail with assertionError
 
         mapOf(1 to 2, 3 to 4, 5 to 6) should !contain key 2
         mapOf("1" to 2) should !contain key "2"
-        {mapOf(1 to 2) should !contain key 1} should fail with assertionError
+        { mapOf(1 to 2) should !contain key 1 } should fail with assertionError
     }
 
     test fun mapShouldContainValue() {
         mapOf(1 to 2, 3 to 4, 5 to 6) should contain value 2
         mapOf("1" to 2) should contain value 2
-        {mapOf(1 to 2) should contain value 1} should fail with assertionError
+        { mapOf(1 to 2) should contain value 1 } should fail with assertionError
 
         mapOf(1 to 2, 3 to 4, 5 to 6) should !contain value 1
         mapOf("1" to 2) should !contain value 1
-        {mapOf(1 to 2) should !contain value 2} should fail with assertionError
+        { mapOf(1 to 2) should !contain value 2 } should fail with assertionError
 
 
     }
