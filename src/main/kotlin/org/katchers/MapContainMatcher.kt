@@ -21,23 +21,23 @@ package org.katchers
  */
 
 class MapContainMatcher<K,V>(override val target: Map<K,V>): Matcher<Map<K,V>>{
-    private inline fun item(key: K, value: V) = if(!(value == target.get(key))) fail("$target contains ($key=$value)", "$target doesn't contain ($key=$value)")
-    inline fun item(el: Pair<K,V>) =  item(el.first, el.second)
-    inline fun key(key: K) = if(!target.containsKey(key)) fail("$target contains key $key", "$target doesn't contain key $key")
-    inline fun value(value: V) = if(!target.containsValue(value)) fail("$target contains value $value", "$target doesn't contain value $value")
+    private  fun item(key: K, value: V) = if(value != target.get(key)) fail("$target contains ($key=$value)", "$target doesn't contain ($key=$value)")
+     fun item(el: Pair<K,V>) =  item(el.first, el.second)
+     fun key(key: K) = if(!target.containsKey(key)) fail("$target contains key $key", "$target doesn't contain key $key")
+     fun value(value: V) = if(!target.containsValue(value)) fail("$target contains value $value", "$target doesn't contain value $value")
 }
 
 class MapNotContainMatcher<K,V>(override val target: Map<K,V>): Matcher<Map<K,V>>{
-    private inline fun item(key: K, value: V) = if(value == target.get(key)) fail("$target should not contain ($key=$value)", "$target contains ($key=$value)")
-    inline fun item(el: Pair<K,V>) =  item(el.first, el.second)
-    inline fun key(key: K) = if(target.containsKey(key)) fail("$target should not contain key $key", "$target contains key $key")
-    inline fun value(value: V) = if(target.containsValue(value)) fail("$target should not contain value $value", "$target contains value $value")
+    private  fun item(key: K, value: V) = if(value == target.get(key)) fail("$target should not contain ($key=$value)", "$target contains ($key=$value)")
+     fun item(el: Pair<K,V>) =  item(el.first, el.second)
+     fun key(key: K) = if(target.containsKey(key)) fail("$target should not contain key $key", "$target contains key $key")
+     fun value(value: V) = if(target.containsValue(value)) fail("$target should not contain value $value", "$target contains value $value")
 }
 
 class MapHaveMatcher<K,V>(override val target: Map<K,V>): Matcher<Map<K,V>>{
-    fun size(size: Int) = if(target.size != size) fail("$target should have size $size", "$target has size ${target.size}")
+    fun size(size: Int) = if(target.size() != size) fail("$target should have size $size", "$target has size ${target.size()}")
 }
 
 class MapNotHaveMatcher<K,V>(override val target: Map<K,V>): Matcher<Map<K,V>>{
-    fun size(size: Int) = if(target.size == size) fail("$target should not have size $size", "$target has size ${target.size}")
+    fun size(size: Int) = if(target.size() == size) fail("$target should not have size $size", "$target has size ${target.size()}")
 }
