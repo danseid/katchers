@@ -34,8 +34,8 @@
       </snapshotRepository>
     </distributionManagement>
     <properties>
-        <kotlin.version>0.4.297</kotlin.version>
-        <junit.version>4.10</junit.version>
+        <kotlin.version>0.11.91</kotlin.version>
+        <junit.version>4.12</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

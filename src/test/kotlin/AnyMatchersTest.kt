@@ -51,7 +51,7 @@ public class AnyMatchersTest {
     }
 
     test fun condition() {
-        object book {
+        val book = object {
             val title = "Title"
             val author = "Author"
         }

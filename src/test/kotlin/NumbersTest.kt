@@ -35,8 +35,8 @@ public class NumbersTest {
         val onePointOneD = 1.1
         val onePointOneF = (1.1).toFloat()
 
-        val oneList: List<Number> = arrayList<Number>(oneD, oneF, oneI, oneL, oneS, oneB)
-        val onePointOneList: List<Number> = arrayList<Number>(onePointOneD, onePointOneF)
+        val oneList = listOf<Number>(oneD, oneF, oneI, oneL, oneS, oneB)
+        val onePointOneList = listOf<Number>(onePointOneD, onePointOneF)
         for(n1 in oneList) for(n2 in oneList) {
             (n1 compare n2) should be equal 0
         }

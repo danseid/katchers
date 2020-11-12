@@ -30,9 +30,9 @@ class CollectionNotContainMatcher<T>(override val target: Collection<T>): Matche
 }
 
 class CollectionHaveMatcher<T>(override val target: Collection<T>): Matcher<Collection<T>>{
-    fun size(size: Int) = if(target.size != size) fail("$target should have size $size", "$target has size ${target.size}")
+    fun size(size: Int) = if(target.size() != size) fail("$target should have size $size", "$target has size ${target.size()}")
 }
 
 class CollectionNotHaveMatcher<T>(override val target: Collection<T>): Matcher<Collection<T>>{
-    fun size(size: Int) = if(target.size == size) fail("$target should not have size $size", "$target has size ${target.size}")
+    fun size(size: Int) = if(target.size() == size) fail("$target should not have size $size", "$target has size ${target.size()}")
 }

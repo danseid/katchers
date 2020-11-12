@@ -42,7 +42,7 @@ public class FunctionMatcherTest {
 
     }
 
-    inline fun failIfNoAssertionErrorThrown(block: () -> Unit) {
+     fun failIfNoAssertionErrorThrown(block: () -> Unit) {
         var assertErrorThrown = false
         try{
             block()

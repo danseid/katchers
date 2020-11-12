@@ -21,13 +21,13 @@ package org.katchers
  */
 
 
-class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
-    inline fun gt(value: Number) = greaterThan(value)
-    inline fun gte(value: Number) = greaterOrEqualThan(value)
-    inline fun lt(value: Number) = lessThan(value)
-    inline fun lte(value: Number) = lessOrEqualThan(value)
+class NumberBeMatcher(target: Number): AnyBeMatcher<Number>(target){
+     fun gt(value: Number) = greaterThan(value)
+     fun gte(value: Number) = greaterOrEqualThan(value)
+     fun lt(value: Number) = lessThan(value)
+     fun lte(value: Number) = lessOrEqualThan(value)
 
-    inline fun greaterThan(value: jet.Number) {
+     fun greaterThan(value: Number) {
         when {
             target == value -> fail("$target > $value", "$target == $value")
             target compare value < 0 ->  fail("$target > $value", "$target < $value")
@@ -35,9 +35,9 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
         }
     }
 
-    inline fun greaterOrEqualThan(value: Number) = if(target compare value < 0) fail("$target >= $value", "$target < $value")
+     fun greaterOrEqualThan(value: Number) = if(target compare value < 0) fail("$target >= $value", "$target < $value")
 
-    inline fun lessThan(value: Number) {
+     fun lessThan(value: Number) {
         when {
             target == value -> fail("$target < $value", "$target == $value")
             target compare value > 0  ->  fail("$target < $value", "$target > $value")
@@ -45,9 +45,9 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
         }
     }
 
-    inline fun lessOrEqualThan(value: Number) = if(target compare value > 0) fail("$target <= $value", "$target > $value")
+     fun lessOrEqualThan(value: Number) = if(target compare value > 0) fail("$target <= $value", "$target > $value")
 
-    inline fun inRange(val r: IntRange) {
+     fun inRange(r: IntRange) {
       if (target !in r) fail("$target should be in [${r.start},${r.end}]", "$target is not in [${r.start},${r.end}]")
     }
 
@@ -55,16 +55,15 @@ class NumberBeMatcher(target: jet.Number): AnyBeMatcher<Number>(target){
 
 class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
 
-    inline fun gt(value: Number) = greaterThan(value)
-    inline fun gte(value: Number) = greaterOrEqualThan(value)
-    inline fun lt(value: Number) = lessThan(value)
-    inline fun lte(value: Number) = lessOrEqualThan(value)
+     fun gt(value: Number) = greaterThan(value)
+     fun gte(value: Number) = greaterOrEqualThan(value)
+     fun lt(value: Number) = lessThan(value)
+     fun lte(value: Number) = lessOrEqualThan(value)
 
-    inline fun greaterThan(value: Number) = if(target compare value > 0) {
+     fun greaterThan(value: Number) = if(target compare value > 0)
         fail("!($target > $value)", "$target > $value")
-    }
 
-    inline fun greaterOrEqualThan(value: Number) {
+     fun greaterOrEqualThan(value: Number) {
         when {
             target == value -> fail("!($target >= $value)", "$target == $value")
             target compare value > 0 ->  fail("!($target >= $value)", "$target > $value")
@@ -72,9 +71,9 @@ class NumberNotBeMatcher(target: Number): AnyNotBeMatcher<Number>(target){
         }
     }
 
-    inline fun lessThan(value: Number) = if(target compare value < 0) fail("!($target < $value)", "$target < $value")
+     fun lessThan(value: Number) = if(target compare value < 0) fail("!($target < $value)", "$target < $value")
 
-    inline fun lessOrEqualThan(value: Number) {
+     fun lessOrEqualThan(value: Number) {
         when {
             target == value -> fail("!($target <= $value)", "$target == $value")
             target compare value < 0 ->  fail("!($target <= $value)", "$target < $value")

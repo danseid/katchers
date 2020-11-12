@@ -43,5 +43,5 @@ class FunctionNotFailMatcher<T: () -> Any>(override val target: T): Matcher<T>{
     }
 }
 
-private inline fun Throwable.getName() = this.javaClass.getName()
+private  fun Throwable.getName() = this.javaClass.getName()
 public val assertionError : AssertionError = AssertionError()

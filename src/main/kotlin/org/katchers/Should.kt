@@ -24,24 +24,24 @@ import kotlin.test.*
  */
 
 // Any should
-public fun <T>T.should(val verb: BE): AnyBeMatcher<T> = AnyBeMatcher(this)
-public fun <T>T.should(val verb: NOTBE): AnyNotBeMatcher<T> = AnyNotBeMatcher(this)
-public fun <T>T.should(val verb: MATCH): AnyMatchMatcher<T> = AnyMatchMatcher(this)
-public fun <T>T.should(val verb: NOTMATCH): AnyNotMatchMatcher<T> = AnyNotMatchMatcher(this);
+public fun <T>T.should(verb: BE): AnyBeMatcher<T> = AnyBeMatcher(this)
+public fun <T>T.should(verb: NOTBE): AnyNotBeMatcher<T> = AnyNotBeMatcher(this)
+public fun <T>T.should(verb: MATCH): AnyMatchMatcher<T> = AnyMatchMatcher(this)
+public fun <T>T.should(verb: NOTMATCH): AnyNotMatchMatcher<T> = AnyNotMatchMatcher(this);
 
 // String should have | start | end | contain
-public fun String.should(val verb: HAVE): StringHaveMatcher = StringHaveMatcher(this)
-public fun String.should(val verb: NOTHAVE): StringNotHaveMatcher = StringNotHaveMatcher(this)
-public fun String.should(val verb: START): StringStartMatcher = StringStartMatcher(this)
-public fun String.should(val verb: NOTSTART): StringNotStartMatcher = StringNotStartMatcher(this)
-public fun String.should(val verb: END): StringEndMatcher = StringEndMatcher(this)
-public fun String.should(val verb: NOTEND): StringNotEndMatcher = StringNotEndMatcher(this)
-public fun String.should(val verb: CONTAIN): StringContainMatcher = StringContainMatcher(this)
-public fun String.should(val verb: NOTCONTAIN): StringNotContainMatcher = StringNotContainMatcher(this)
+public fun String.should(verb: HAVE): StringHaveMatcher = StringHaveMatcher(this)
+public fun String.should(verb: NOTHAVE): StringNotHaveMatcher = StringNotHaveMatcher(this)
+public fun String.should(verb: START): StringStartMatcher = StringStartMatcher(this)
+public fun String.should(verb: NOTSTART): StringNotStartMatcher = StringNotStartMatcher(this)
+public fun String.should(verb: END): StringEndMatcher = StringEndMatcher(this)
+public fun String.should(verb: NOTEND): StringNotEndMatcher = StringNotEndMatcher(this)
+public fun String.should(verb: CONTAIN): StringContainMatcher = StringContainMatcher(this)
+public fun String.should(verb: NOTCONTAIN): StringNotContainMatcher = StringNotContainMatcher(this)
 
 // Number should be
-public inline fun Number.should(val verb: BE): NumberBeMatcher = NumberBeMatcher(this)
-public inline fun Number.should(val verb: NOTBE): NumberNotBeMatcher = NumberNotBeMatcher(this)
+public  fun Number.should(verb: BE): NumberBeMatcher = NumberBeMatcher(this)
+public  fun Number.should(verb: NOTBE): NumberNotBeMatcher = NumberNotBeMatcher(this)
 
 
 //() -> Unit should fail
@@ -49,16 +49,16 @@ public fun <T: () -> Any>T.should(verb: NOTFAIL): FunctionNotFailMatcher<T> = Fu
 public fun <T: () -> Any>T.should(verb: FAIL): FunctionFailMatcher<T> = FunctionFailMatcher(this)
 
 //Collection
-public fun <T>Collection<T>.should(verb: CONTAIN): CollectionContainMatcher<T> = CollectionContainMatcher<T>(this)
-public fun <T>Collection<T>.should(verb: NOTCONTAIN): CollectionNotContainMatcher<T> = CollectionNotContainMatcher<T>(this)
-public fun <T>Collection<T>.should(verb: HAVE): CollectionHaveMatcher<T> = CollectionHaveMatcher<T>(this)
-public fun <T>Collection<T>.should(verb: NOTHAVE): CollectionNotHaveMatcher<T> = CollectionNotHaveMatcher<T>(this)
+public fun <T>Collection<T>.should(verb: CONTAIN): CollectionContainMatcher<T> = CollectionContainMatcher(this)
+public fun <T>Collection<T>.should(verb: NOTCONTAIN): CollectionNotContainMatcher<T> = CollectionNotContainMatcher(this)
+public fun <T>Collection<T>.should(verb: HAVE): CollectionHaveMatcher<T> = CollectionHaveMatcher(this)
+public fun <T>Collection<T>.should(verb: NOTHAVE): CollectionNotHaveMatcher<T> = CollectionNotHaveMatcher(this)
 
 //Map
-public fun <K,V>Map<K,V>.should(verb: CONTAIN): MapContainMatcher<K,V> = MapContainMatcher<K,V>(this)
-public fun <K,V>Map<K,V>.should(verb: NOTCONTAIN): MapNotContainMatcher<K,V> = MapNotContainMatcher<K,V>(this)
-public fun <K,V>Map<K,V>.should(verb: HAVE): MapHaveMatcher<K,V> = MapHaveMatcher<K,V>(this)
-public fun <K,V>Map<K,V>.should(verb: NOTHAVE): MapNotHaveMatcher<K,V> = MapNotHaveMatcher<K,V>(this)
+public fun <K,V>Map<K,V>.should(verb: CONTAIN): MapContainMatcher<K,V> = MapContainMatcher(this)
+public fun <K,V>Map<K,V>.should(verb: NOTCONTAIN): MapNotContainMatcher<K,V> = MapNotContainMatcher(this)
+public fun <K,V>Map<K,V>.should(verb: HAVE): MapHaveMatcher<K,V> = MapHaveMatcher(this)
+public fun <K,V>Map<K,V>.should(verb: NOTHAVE): MapNotHaveMatcher<K,V> = MapNotHaveMatcher(this)
 
 
 
