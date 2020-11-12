@@ -35,7 +35,7 @@
     </distributionManagement>
     <properties>
         <kotlin.version>0.11.91</kotlin.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
